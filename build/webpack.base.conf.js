@@ -1,9 +1,3 @@
-/*
- * @Descripttion:
- * @Author: peroLuo
- * @Date: 2020-06-18 15:33:26
- * @LastEditTime: 2020-06-22 15:34:31
- */
 "use strict";
 const path = require("path");
 const utils = require("./utils");

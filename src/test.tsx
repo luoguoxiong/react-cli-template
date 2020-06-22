@@ -1,7 +1,6 @@
 import * as React from "react";
 interface IAppProps {}
 interface IAppState {}
-
 class App extends React.Component<IAppProps, IAppState> {
   componentDidMount() {
     new Set();
@@ -11,7 +10,7 @@ class App extends React.Component<IAppProps, IAppState> {
     return new Promise((res) => {});
   }
   render() {
-    return <div>Hello world3</div>;
+    return <div>Hts</div>;
   }
 }
 export default App;

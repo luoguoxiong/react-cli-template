@@ -8,6 +8,7 @@ const baseWebpackConfig = require("./webpack.base.conf");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const env = require("../config/prod.env");
 
@@ -16,13 +17,18 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath("js/[name].[chunkhash].js"),
-    chunkFilename: utils.assetsPath("js/[id].[chunkhash].js"),
+    filename: utils.assetsPath("js/[name].[contenthash].js"),
+    chunkFilename: utils.assetsPath("js/[id].[contenthash].js"),
   },
   plugins: [
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+    }),
     new MiniCssExtractPlugin({
-      filename: utils.assetsPath("css/[name].[chunkhash].css"),
-      chunkFilename: utils.assetsPath("css/[id].[chunkhash].css"),
+      filename: utils.assetsPath("css/[name].[contenthash].css"),
+      chunkFilename: utils.assetsPath("css/[id].[contenthash].css"),
     }),
     // 用来定义全局变量，在webpack打包的时候会对这些变量做替换。
     new webpack.DefinePlugin({

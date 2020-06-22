@@ -1,16 +1,21 @@
+/*
+ * @Descripttion:
+ * @Author: peroLuo
+ * @Date: 2020-06-18 16:01:19
+ * @LastEditTime: 2020-06-22 18:03:15
+ */
+
 import React from "react";
 import { render } from "react-dom";
-import Apps from "./test";
-import styles from "./index.less";
 import "./global.css";
 import "./global.less";
+import { Provider } from "react-redux";
+import App from "./app";
+import { store } from "./store";
 
-function App() {
-  return (
-    <div className={styles.box}>
-      <Apps />
-    </div>
-  );
-}
-
-render(<App />, document.getElementById("app"));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("app")
+);
