@@ -6,9 +6,9 @@ const merge = require("webpack-merge");
 const path = require("path");
 const baseWebpackConfig = require("./webpack.base.conf");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const portfinder = require("portfinder");
 
 const HOST = process.env.HOST;
@@ -16,50 +16,6 @@ const PORT = process.env.PORT && Number(process.env.PORT);
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: "development",
-  module: {
-    rules: [
-      {
-        test: new RegExp(`^(.*.global).*.(css|less)$`),
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: "css-loader",
-          },
-          {
-            loader: "less-loader",
-          },
-          {
-            loader: "postcss-loader",
-          },
-        ],
-      },
-      {
-        test: new RegExp(`^(?!.*.global).*.(css|less)$`),
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: config.dev.cssModules,
-              sourceMap: config.dev.cssSourceMap,
-            },
-          },
-          {
-            loader: "less-loader",
-          },
-          {
-            loader: "postcss-loader",
-          },
-        ],
-      },
-    ],
-  },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
 

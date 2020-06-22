@@ -1,10 +1,3 @@
-/*
- * @Descripttion:
- * @Author: peroLuo
- * @Date: 2020-06-18 15:33:59
- * @LastEditTime: 2020-06-18 20:52:28
- */
-
 "use strict";
 const path = require("path");
 const utils = require("./utils");
@@ -15,18 +8,11 @@ const baseWebpackConfig = require("./webpack.base.conf");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const env = require("../config/prod.env");
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: "production",
-  module: {
-    // rules: utils.styleLoaders({
-    //   sourceMap: config.build.productionSourceMap,
-    //   extract: true,
-    //   usePostCSS: true,
-    // }),
-  },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
@@ -34,20 +20,20 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath("js/[id].[chunkhash].js"),
   },
   plugins: [
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
+    new MiniCssExtractPlugin({
+      filename: utils.assetsPath("css/[name].[chunkhash].css"),
+      chunkFilename: utils.assetsPath("css/[id].[chunkhash].css"),
+    }),
+    // 用来定义全局变量，在webpack打包的时候会对这些变量做替换。
     new webpack.DefinePlugin({
       "process.env": env,
     }),
-    // Compress extracted CSS. We are using this plugin so that possible
-    // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: config.build.productionSourceMap
         ? { safe: true, map: { inline: false } }
         : { safe: true },
     }),
-    // generate dist index.html with correct asset hash for caching.
-    // you can customize output by editing /index.html
-    // see https://github.com/ampedandwired/html-webpack-plugin
+    // html模板配置
     new HtmlWebpackPlugin({
       filename: config.build.index,
       template: "index.html",
@@ -78,13 +64,7 @@ if (config.build.productionGzip) {
 
   webpackConfig.plugins.push(
     new CompressionWebpackPlugin({
-      asset: "[path].gz[query]",
       algorithm: "gzip",
-      test: new RegExp(
-        "\\.(" + config.build.productionGzipExtensions.join("|") + ")$"
-      ),
-      threshold: 10240,
-      minRatio: 0.8,
     })
   );
 }

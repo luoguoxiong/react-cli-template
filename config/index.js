@@ -1,6 +1,3 @@
-"use strict";
-// Template version: 1.3.1
-
 const path = require("path");
 
 module.exports = {
@@ -13,18 +10,16 @@ module.exports = {
     // Various Dev Server settings
     host: "localhost", // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    // Use Eslint Loader?
-    // If true, your code will be linted during bundling and
-    // linting errors and warnings will be shown in the console.
-    useEslint: true,
-    // If true, eslint errors and warnings will also be shown in the error overlay
+    // Use lint Loader?.
+    useLint: true,
+    // If true, lint errors and warnings will also be shown in the error overlay
     // in the browser.
-    showEslintErrorsInOverlay: false,
+    showlintErrorsInOverlay: true,
 
     devtool: "cheap-module-eval-source-map",
 
@@ -39,7 +34,7 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, "../dist"), // 静态文件目录
-    assetsSubDirectory: "static", //静态文件名
+    assetsSubDirectory: "static", // 静态文件名
     assetsPublicPath: "/",
 
     /**
@@ -54,8 +49,7 @@ module.exports = {
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
-    productionGzip: false,
-    productionGzipExtensions: ["js", "css"],
+    productionGzip: true,
 
     // Run the build command with an extra argument to
     // View the bundle analyzer report after build finishes:

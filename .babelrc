@@ -3,13 +3,12 @@
     [
       "@babel/preset-env",
       {
-        "targets": {
-          "browsers": ["IE >= 9"]
-        }
-        // "corejs": "3",
-        // "useBuiltIns": "usage"
+        "useBuiltIns": "usage",
+        "corejs": 3
       }
     ],
-    "@babel/preset-react"
-  ]
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  "plugins": [["@babel/plugin-transform-runtime"]]
 }

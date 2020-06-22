@@ -12,7 +12,16 @@
     "sourceMap": true,
     "moduleResolution": "node", //决定如何处理模块
     "allowJs": true, //允许编译js文件
-    "lib": ["esnext", "dom", "dom.iterable"] //编译过程中需要引入的库文件的列表
+    "lib": ["esnext", "dom", "dom.iterable"], //编译过程中需要引入的库文件的列表
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "declaration": true
   },
   "include": ["src/**/*"], //编译包含在  src及其子目录下的所有匹配的文件
   "exclude": ["dist", "node_modules", "src/**/*.js", "src/**/*.jsx"] //编译时排除 dist、node_modules、.js、.jsx文件夹

@@ -1,18 +1,18 @@
+/*
+ * @Descripttion:
+ * @Author: peroLuo
+ * @Date: 2020-06-18 15:33:26
+ * @LastEditTime: 2020-06-22 15:34:31
+ */
 "use strict";
 const path = require("path");
 const utils = require("./utils");
 const config = require("../config");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 function resolve(dir) {
   return path.join(__dirname, "..", dir);
 }
-const createLintingRule = () => ({
-  test: /\.(js)$/,
-  loader: "eslint-loader",
-  exclude: /node_modules/,
-  enforce: "pre",
-  include: [resolve("src")],
-});
 
 module.exports = {
   // 基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
@@ -45,9 +45,56 @@ module.exports = {
   // 模块（打包规则）
   module: {
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
+      ...(config.dev.useLint ? utils.createLintingRule() : []),
+      // .global css/less不使用postcss-loader和cssmodules
       {
-        test: /\.js$/,
+        test: new RegExp(`^(.*.global).*.(css|less)$`),
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: config.dev.cssSourceMap,
+            },
+          },
+          {
+            loader: "less-loader",
+          },
+        ],
+      },
+      {
+        test: new RegExp(`^(?!.*.global).*.(css|less)$`),
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: config.dev.cssModules,
+              sourceMap: config.dev.cssSourceMap,
+            },
+          },
+          {
+            loader: "less-loader",
+          },
+          {
+            loader: "postcss-loader",
+          },
+        ],
+      },
+      {
+        test: /\.(tsx|ts)$/,
+        exclude: /node_modules/,
+        include: [resolve("src")],
+        loader: "ts-loader",
+      },
+      {
+        test: /\.(js|jsx)$/,
         loader: "babel-loader",
         exclude: /node_modules/,
         include: [resolve("src")],
@@ -78,6 +125,9 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [],
+
   // node.js 环境编写的代码，在其他环境（如浏览器）中运行
   node: {
     // empty：空对象、false：什么都不提供
