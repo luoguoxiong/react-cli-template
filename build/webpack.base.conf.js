@@ -3,7 +3,6 @@ const path = require("path");
 const utils = require("./utils");
 const config = require("../config");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
 function resolve(dir) {
   return path.join(__dirname, "..", dir);
 }
@@ -39,7 +38,7 @@ module.exports = {
   // 模块（打包规则）
   module: {
     rules: [
-      ...(config.dev.useLint ? utils.createLintingRule() : []),
+      // ...(config.dev.useLint ? utils.createLintingRule() : []),
       // .global css/less不使用postcss-loader和cssmodules
       {
         test: new RegExp(`^(.*.global).*.(css|less)$`),
@@ -82,16 +81,20 @@ module.exports = {
         ],
       },
       {
-        test: /\.(tsx|ts)$/,
-        exclude: /node_modules/,
+        test: /\.(jsx|tsx|ts|js)?$/,
+        use: [
+          "babel-loader",
+          {
+            loader: "eslint-loader",
+            options: {
+              formatter: require("eslint-friendly-formatter"),
+              emitWarning: !config.dev.showlintErrorsInOverlay,
+              emitError: !config.dev.showlintErrorsInOverlay,
+            },
+          },
+        ],
         include: [resolve("src")],
-        loader: "ts-loader",
-      },
-      {
-        test: /\.(js|jsx)$/,
-        loader: "babel-loader",
         exclude: /node_modules/,
-        include: [resolve("src")],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

@@ -2,7 +2,7 @@
  * @Descripttion:
  * @Author: peroLuo
  * @Date: 2020-06-18 15:50:56
- * @LastEditTime: 2020-06-22 15:33:51
+ * @LastEditTime: 2020-06-22 20:00:59
  */
 "use strict";
 const path = require("path");
@@ -12,35 +12,6 @@ const packageConfig = require("../package.json");
 const wordDir = path.join(__dirname, "..", "src");
 
 exports.wordDir = wordDir;
-
-// eslint、tslint代码校验配置
-exports.createLintingRule = function () {
-  return [
-    {
-      test: /\.(js|jsx)$/,
-      loader: "eslint-loader",
-      exclude: /node_modules/,
-      enforce: "pre",
-      include: [wordDir],
-      options: {
-        formatter: require("eslint-friendly-formatter"),
-        emitWarning: !config.dev.showlintErrorsInOverlay,
-        emitError: !config.dev.showlintErrorsInOverlay,
-      },
-    },
-    {
-      test: /\.(tsx|ts)$/,
-      loader: "tslint-loader",
-      exclude: /node_modules/,
-      enforce: "pre",
-      include: [wordDir],
-      options: {
-        emitWarning: !config.dev.showlintErrorsInOverlay,
-        emitError: !config.dev.showlintErrorsInOverlay,
-      },
-    },
-  ];
-};
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory =

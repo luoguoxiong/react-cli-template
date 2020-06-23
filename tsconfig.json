@@ -20,7 +20,8 @@
     "noUnusedLocals": true,
     "experimentalDecorators": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "declaration": true //生成.d.ts文件
   },
   "include": ["src/**/*"], //编译包含在  src及其子目录下的所有匹配的文件
   "exclude": ["dist", "node_modules", "src/**/*.js", "src/**/*.jsx"] //编译时排除 dist、node_modules、.js、.jsx文件夹

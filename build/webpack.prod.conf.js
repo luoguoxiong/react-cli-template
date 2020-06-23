@@ -1,3 +1,10 @@
+/*
+ * @Descripttion:
+ * @Author: peroLuo
+ * @Date: 2020-06-18 15:33:59
+ * @LastEditTime: 2020-06-22 21:09:37
+ */
+
 "use strict";
 const path = require("path");
 const utils = require("./utils");
@@ -9,6 +16,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const env = require("../config/prod.env");
 
@@ -45,8 +53,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       template: "index.html",
       inject: true,
     }),
-    // keep module.id stable when vendor modules does not change
-    new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
 
@@ -79,6 +85,8 @@ if (config.build.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
     .BundleAnalyzerPlugin;
   webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+} else {
+  webpackConfig.plugins.push(new HardSourceWebpackPlugin());
 }
 
 module.exports = webpackConfig;

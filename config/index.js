@@ -2,7 +2,7 @@
  * @Descripttion:
  * @Author: peroLuo
  * @Date: 2020-06-18 15:46:42
- * @LastEditTime: 2020-06-22 18:38:03
+ * @LastEditTime: 2020-06-22 20:00:35
  */
 
 const path = require("path");
@@ -24,8 +24,7 @@ module.exports = {
 
     // Use lint Loader?.
     useLint: true,
-    // If true, lint errors and warnings will also be shown in the error overlay
-    // in the browser.
+    // If true, lint errors and warnings will also be shown in the error overlay in the browser.
     showlintErrorsInOverlay: true,
 
     devtool: "cheap-module-eval-source-map",

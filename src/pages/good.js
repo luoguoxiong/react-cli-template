@@ -1,5 +1,14 @@
+/*
+ * @Descripttion:
+ * @Author: peroLuo
+ * @Date: 2020-06-22 16:18:42
+ * @LastEditTime: 2020-06-22 21:07:56
+ */
+
 /* eslint-disable react/button-has-type */
 import React from "react";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import axios from "axios";
 import { connect } from "react-redux";
 
 const mapState = (state) => ({
@@ -17,6 +26,21 @@ const mapDispatch = (dispatch) => ({
 });
 
 class Count extends React.PureComponent {
+  componentDidMount() {
+    axios
+      .get("/user?ID=12345")
+      // eslint-disable-next-line func-names
+      .then(function (response) {
+        // eslint-disable-next-line no-console
+        console.log(response);
+      })
+      // eslint-disable-next-line func-names
+      .catch(function (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div style={{ display: "flex", flexDirection: "row" }}>

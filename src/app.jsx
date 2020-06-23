@@ -8,12 +8,13 @@ function RenderRouters({ rout }) {
       <Route
         path={item.link}
         exact
-        key={item.name}
+        key={item.link}
         render={() => <item.component />}
       />
     );
   });
 }
+
 export default () => {
   return (
     <Router>
