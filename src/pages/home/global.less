@@ -1,0 +1,185 @@
+.shareFriend {
+  background-color: #ec063e;
+  padding: 30px 30px 0;
+  box-sizing: border-box;
+}
+.swiperBox {
+  position: relative;
+  height: 50px;
+  box-sizing: content-box;
+}
+.playRule {
+  height: 50px;
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background-image: linear-gradient(135deg, #ff553b 0%, #fe3832 100%);
+  border-radius: 100px 0 0 100px;
+  font-size: 22px;
+  color: #ffe8c6;
+  text-align: center;
+  padding: 0 12px 0 20px;
+  line-height: 50px;
+}
+.activeTitle {
+  padding-top: 50px;
+  height: 84px;
+  font-size: 60px;
+  color: #ffe8c6;
+}
+.activeSubtitle {
+  font-size: 26px;
+  color: #ffe8c6;
+  line-height: 38px;
+}
+.inviteDetail {
+  margin-top: 188px;
+  width: 690px;
+  height: 144px;
+  background: #ffffff;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 40px 0;
+  box-sizing: border-box;
+  display: flex;
+  .inviteItem {
+    flex: 1;
+    padding-left: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .inviteText {
+      font-size: 26px;
+      color: #1e1e1e;
+      line-height: 32px;
+    }
+    .inviteNum {
+      font-family: AkzidenzGroteskBQ-BdCnd;
+      font-size: 80px;
+      color: #fe3b33;
+      padding-left: 20px;
+      span {
+        padding-left: 10px;
+        font-size: 26px;
+        color: #fe3b33;
+        line-height: 32px;
+      }
+    }
+  }
+  .line {
+    height: 100%;
+    width: 1px;
+    background: #cccccc;
+  }
+}
+.myInvite {
+  padding-top: 30px;
+  font-size: 24px;
+  color: #ffe3ad;
+  line-height: 32px;
+  text-align: center;
+}
+.acitveTitle {
+  font-size: 32px;
+  color: #ffe8c6;
+  text-align: center;
+  line-height: 44px;
+  margin-top: 60px;
+}
+
+// 倒计时
+.timeoutWrap {
+  width: 690px;
+  height: 90px;
+  background: rgba(39, 39, 39, 0.1);
+  border-radius: 10px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .text {
+    padding-left: 70px;
+    font-size: 28px;
+    color: #ffe282;
+  }
+  .numberWrap {
+    flex: 1;
+    display: flex;
+    color: white;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    line-height: 45px;
+  }
+  .numberItem {
+    background: rgba(39, 39, 39, 0.1);
+    width: 40px;
+    height: 50px;
+    font-size: 30px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+  }
+  .numberItem:nth-child(1) {
+    margin-left: 0;
+  }
+  .numberItem:nth-child(2n) {
+    margin-right: 10px;
+  }
+}
+
+.inviteList {
+  height: auto;
+  padding: 0 30px;
+  background-color: white;
+
+  .inviteUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .icon {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: #efefef;
+  }
+  .inviteMsgs {
+    padding-left: 40px;
+    flex: 1;
+  }
+  .inviteUser:last-child .inviteMsgInner {
+    border-bottom: none;
+  }
+  .inviteMsgInner {
+    padding: 30px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #efefef;
+  }
+  .invietePhone {
+    font-size: 26px;
+    color: #272727;
+    line-height: 36px;
+    display: flex;
+  }
+  .phone {
+    flex: 1;
+  }
+  .inviteNums {
+    width: auto;
+    font-size: 24px;
+    span {
+      color: #ff6900;
+    }
+  }
+  .winPercent {
+    padding-top: 4px;
+    font-size: 24px;
+    color: #272727;
+    line-height: 36px;
+    span {
+      color: #ff6900;
+    }
+  }
+}

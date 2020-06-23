@@ -2,7 +2,7 @@
  * @Descripttion:
  * @Author: peroLuo
  * @Date: 2020-06-18 16:01:19
- * @LastEditTime: 2020-06-22 19:44:53
+ * @LastEditTime: 2020-06-23 16:02:48
  */
 
 import React from "react";
@@ -11,7 +11,6 @@ import { Provider } from "react-redux";
 import App from "./app";
 import { store } from "./store";
 import "./global.css";
-import "./global.less";
 
 render(
   <Provider store={store}>

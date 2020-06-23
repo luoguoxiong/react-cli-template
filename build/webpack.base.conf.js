@@ -38,7 +38,6 @@ module.exports = {
   // 模块（打包规则）
   module: {
     rules: [
-      // ...(config.dev.useLint ? utils.createLintingRule() : []),
       // .global css/less不使用postcss-loader和cssmodules
       {
         test: new RegExp(`^(.*.global).*.(css|less)$`),
@@ -55,6 +54,9 @@ module.exports = {
           },
           {
             loader: "less-loader",
+          },
+          {
+            loader: "postcss-loader",
           },
         ],
       },
