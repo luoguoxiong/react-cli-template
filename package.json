@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build": "node build/build.js",
-    "dev2": "node build/dev.js",
     "prod": "node build/server.js",
     "report": "npm run build --report",
     "clean": "rimraf node_modules",
@@ -76,8 +75,7 @@
     "url": "git+https://github.com/Peroluo/react-mobile-cli.git"
   },
   "keywords": [
-    "react",
-    "mobile"
+    "react"
   ],
   "author": "peroLuo",
   "license": "ISC",
