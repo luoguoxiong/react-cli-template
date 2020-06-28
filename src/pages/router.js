@@ -1,13 +1,6 @@
-/*
- * @Descripttion:
- * @Author: peroLuo
- * @Date: 2020-06-22 16:06:42
- * @LastEditTime: 2020-06-23 16:45:44
- */
+import AsyncComponent from "@/components/AsyncComponent";
 
-import AsyncComponent from "../components";
-
-const Home = AsyncComponent(() => import("./home/index"));
+const Home = AsyncComponent(() => import("./home"));
 const Good = AsyncComponent(() => import("./good"));
 const routes = [
   {

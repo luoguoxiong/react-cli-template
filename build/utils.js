@@ -1,18 +1,18 @@
 /*
- * @Descripttion:
+ * @Descripttion: 打包相关工具
  * @Author: peroLuo
  * @Date: 2020-06-18 15:50:56
- * @LastEditTime: 2020-06-22 20:00:59
+ * @LastEditTime: 2020-06-24 18:05:42
  */
 "use strict";
 const path = require("path");
 const config = require("../config");
 const packageConfig = require("../package.json");
 
-const wordDir = path.join(__dirname, "..", "src");
+// 工作区间路径
+exports.wordDir = path.join(__dirname, "..", "src");
 
-exports.wordDir = wordDir;
-
+// 静态文件路径
 exports.assetsPath = function (_path) {
   const assetsSubDirectory =
     process.env.NODE_ENV === "production"
@@ -21,6 +21,7 @@ exports.assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path);
 };
 
+// 客户端消息提醒
 exports.createNotifierCallback = () => {
   const notifier = require("node-notifier");
 

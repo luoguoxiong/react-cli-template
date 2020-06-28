@@ -1,4 +1,4 @@
-// import { Dispatch } from "../store";
+import { Dispatch } from "@/store";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -9,7 +9,7 @@ export const dolphins = {
   reducers: {
     increment: (state: DolphinsState) => state + 1,
   },
-  effects: (dispatch: any) => ({
+  effects: (dispatch: Dispatch) => ({
     async incrementAsync() {
       await delay(500);
       dispatch.dolphins.increment();

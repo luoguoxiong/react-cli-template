@@ -1,8 +1,8 @@
 /*
- * @Descripttion: 生成环境打包
+ * @Descripttion: 生产环境打包
  * @Author: peroLuo
  * @Date: 2020-06-18 15:43:31
- * @LastEditTime: 2020-06-18 16:23:46
+ * @LastEditTime: 2020-06-24 18:07:20
  */
 
 "use strict";
@@ -33,7 +33,7 @@ rm(
         stats.toString({
           colors: true,
           modules: false,
-          children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
+          children: true,
           chunks: false,
           chunkModules: false,
         }) + "\n\n"

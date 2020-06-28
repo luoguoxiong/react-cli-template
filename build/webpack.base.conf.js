@@ -29,7 +29,7 @@ module.exports = {
 
   // 设置模块被解析
   resolve: {
-    extensions: [".js", ".json", ".ts", ".jsx", ".tsx"],
+    extensions: [".js", ".json", ".ts", ".jsx", ".tsx", ".css", ".less"],
     alias: {
       "@": resolve("src"),
     },

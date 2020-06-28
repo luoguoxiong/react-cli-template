@@ -1,28 +1,23 @@
 {
-  "version": "1.0.0",
   "compilerOptions": {
-    "baseUrl": "./", //解析非相对模块的基准目录
-    "paths": {
-      //路径映射，如在文件中使用‘~/’相当于‘src/’
-      "~/*": ["src/*"]
-    },
-    "module": "esnext", //指定生成哪个模块系统的代码
-    "target": "es5", //生成es5的js文件
-    "jsx": "react", //在tsx文件里支持jsx
-    "sourceMap": true,
-    "moduleResolution": "node", //决定如何处理模块
-    "allowJs": true, //允许编译js文件
-    "lib": ["esnext", "dom", "dom.iterable"], //编译过程中需要引入的库文件的列表
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "experimentalDecorators": true,
-    "strict": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
     "skipLibCheck": true,
-    "declaration": true //生成.d.ts文件
+    "strict": false,
+    "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*"], //编译包含在  src及其子目录下的所有匹配的文件
-  "exclude": ["dist", "node_modules", "src/**/*.js", "src/**/*.jsx"] //编译时排除 dist、node_modules、.js、.jsx文件夹
+  "exclude": ["node_modules"]
 }

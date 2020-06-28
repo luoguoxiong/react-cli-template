@@ -1,8 +1,8 @@
 /*
- * @Descripttion:
+ * @Descripttion: 开发环境和生成环境的配置
  * @Author: peroLuo
  * @Date: 2020-06-18 15:46:42
- * @LastEditTime: 2020-06-22 20:00:35
+ * @LastEditTime: 2020-06-24 18:07:04
  */
 
 const path = require("path");

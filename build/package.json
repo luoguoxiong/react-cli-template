@@ -1,7 +1,0 @@
-{
-  "devDependencies": {
-    "friendly-errors-webpack-plugin": "^1.7.0",
-    "html-webpack-plugin": "^4.3.0",
-    "portfinder": "^1.0.26"
-  }
-}
