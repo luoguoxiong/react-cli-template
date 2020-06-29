@@ -43,6 +43,9 @@ module.exports = {
     assetsSubDirectory: "static", // 静态文件名
     assetsPublicPath: "/",
 
+    // 是否开启资源预加载
+    usePreload: false,
+
     /**
      * Source Maps
      */

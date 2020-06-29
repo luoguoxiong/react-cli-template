@@ -18,6 +18,7 @@ const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PreloadWebpackPlugin = require("preload-webpack-plugin");
 const env = require("../config/prod.env");
 
 const webpackConfig = merge(baseWebpackConfig, {
@@ -71,6 +72,13 @@ const webpackConfig = merge(baseWebpackConfig, {
   ],
 });
 
+if (config.build.usePreload) {
+  new PreloadWebpackPlugin({
+    rel: "preload",
+    include: "allChunks",
+  }),
+}
+
 if (config.build.productionGzip) {
   const CompressionWebpackPlugin = require("compression-webpack-plugin");
 
@@ -86,7 +94,7 @@ if (config.build.bundleAnalyzerReport) {
     .BundleAnalyzerPlugin;
   webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 } else {
-  webpackConfig.plugins.push(new HardSourceWebpackPlugin());
+  // webpackConfig.plugins.push(new HardSourceWebpackPlugin());
 }
 
 module.exports = webpackConfig;
