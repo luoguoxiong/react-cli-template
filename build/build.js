@@ -1,34 +1,35 @@
 /*
- * @Descripttion: 生产环境打包
- * @Author: peroLuo
- * @Date: 2020-06-18 15:43:31
- * @LastEditTime: 2020-06-24 18:07:20
+ * @description: 生成环境打包
+ * @author: peroLuo
+ * @date: 2020-06-29 14:58:49
  */
 
 "use strict";
 require("./check-versions")();
-
 process.env.NODE_ENV = "production";
-
 const ora = require("ora");
 const rm = require("rimraf"); // 删除指定目录的所有文件
-const path = require("path");
 const chalk = require("chalk");
 const webpack = require("webpack");
+const Koa = require("koa");
+const koaStatic = require("koa-static");
+const compress = require("koa-compress");
+const history = require("connect-history-api-fallback");
+const path = require("path");
 const config = require("../config");
 const webpackConfig = require("./webpack.prod.conf");
-
 const spinner = ora("building for production...");
 spinner.start();
 
-// 删除静态文件static、开始打包
 rm(
   path.join(config.build.assetsRoot, config.build.assetsSubDirectory),
   (err) => {
     if (err) throw err;
     webpack(webpackConfig, (err, stats) => {
       spinner.stop();
+
       if (err) throw err;
+
       process.stdout.write(
         stats.toString({
           colors: true,
@@ -44,13 +45,40 @@ rm(
         process.exit(1);
       }
 
-      console.log(chalk.cyan("  Build complete.\n"));
-      console.log(
-        chalk.yellow(
-          "  Tip: built files are meant to be served over an HTTP server.\n" +
-            "  Opening index.html over file:// won't work.\n"
-        )
-      );
+      console.log(chalk.green("Webpack build complete.\n"));
+
+      if (!config.build.bundleAnalyzerReport) {
+        console.log(chalk.cyan("Running server...\n"));
+        const app = new Koa();
+        if (config.build.productionGzip) {
+          app.use(compress({}));
+        }
+        app.use(async (ctx, next) => {
+          history({
+            disableDotRule: true,
+            verbose: true,
+            logger: () => {},
+            htmlAcceptHeaders: ["text/html", "application/xhtml+xml"],
+          })(ctx, null, () => {});
+          await next();
+        });
+        app.use(
+          koaStatic(config.build.assetsRoot, {
+            maxage: config.build.cacheControl,
+            gzip: config.build.productionGzip,
+            extensions: ["html"],
+          })
+        );
+        app.listen(config.build.port, () => {
+          console.log(
+            chalk.green(
+              `server is running at http://localhost:${config.build.port}`
+            )
+          );
+        });
+      } else {
+        console.log(chalk.green("webpackBundleAnalyzer is running!\n"));
+      }
     });
   }
 );

@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build": "node build/build.js",
-    "prod": "node build/server.js",
     "report": "npm run build --report",
     "clean": "rimraf node_modules",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -75,7 +74,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Peroluo/react-mobile-cli.git"
+    "url": "git+https://github.com/Peroluo/react-cli.git"
   },
   "keywords": [
     "react"
@@ -83,9 +82,9 @@
   "author": "peroLuo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Peroluo/react-mobile-cli/issues"
+    "url": "https://github.com/Peroluo/react-cli/issues"
   },
-  "homepage": "https://github.com/Peroluo/react-mobile-cli#readme",
+  "homepage": "https://github.com/Peroluo/react-cli#readme",
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
