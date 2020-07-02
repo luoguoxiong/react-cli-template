@@ -18,6 +18,7 @@ const history = require("connect-history-api-fallback");
 const path = require("path");
 const config = require("../config");
 const webpackConfig = require("./webpack.prod.conf");
+
 const spinner = ora("building for production...");
 spinner.start();
 
@@ -49,36 +50,38 @@ rm(
 
       if (!config.build.bundleAnalyzerReport) {
         console.log(chalk.cyan("Running server...\n"));
-        const app = new Koa();
-        if (config.build.productionGzip) {
-          app.use(compress({}));
-        }
-        app.use(async (ctx, next) => {
-          history({
-            disableDotRule: true,
-            verbose: true,
-            logger: () => {},
-            htmlAcceptHeaders: ["text/html", "application/xhtml+xml"],
-          })(ctx, null, () => {});
-          await next();
-        });
-        app.use(
-          koaStatic(config.build.assetsRoot, {
-            maxage: config.build.cacheControl,
-            gzip: config.build.productionGzip,
-            extensions: ["html"],
-          })
-        );
-        app.listen(config.build.port, () => {
-          console.log(
-            chalk.green(
-              `server is running at http://localhost:${config.build.port}`
-            )
-          );
-        });
+        runServer();
       } else {
         console.log(chalk.green("webpackBundleAnalyzer is running!\n"));
       }
     });
   }
 );
+
+function runServer() {
+  const app = new Koa();
+  if (config.build.productionGzip) {
+    app.use(compress({}));
+  }
+  app.use(async (ctx, next) => {
+    history({
+      disableDotRule: true,
+      verbose: true,
+      logger: () => {},
+      htmlAcceptHeaders: ["text/html", "application/xhtml+xml"],
+    })(ctx, null, () => {});
+    await next();
+  });
+  app.use(
+    koaStatic(config.build.assetsRoot, {
+      maxage: config.build.cacheControl,
+      gzip: config.build.productionGzip,
+      extensions: ["html"],
+    })
+  );
+  app.listen(config.build.port, () => {
+    console.log(
+      chalk.green(`server is running at http://localhost:${config.build.port}`)
+    );
+  });
+}

@@ -56,7 +56,7 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report,
 
     // 生成环境端口
-    port: 5203,
+    port: 8000,
 
     // 静态资源缓存时间
     cacheControl: 24 * 60 * 60 * 1000 * 90,
