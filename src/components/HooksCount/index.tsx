@@ -8,8 +8,8 @@ export default function Count() {
   const dispath = useDispatch();
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      <div style={{ width: 120 }}>
-        <h3>Dolphins</h3>
+      <div style={{ width: 200 }}>
+        <h3>Hooks type count</h3>
         <h1>{counter}</h1>
         <button
           type="button"
