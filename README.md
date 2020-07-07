@@ -34,3 +34,34 @@ cnpm install
 > 分析打包后的资源大小
 >
 > 自动打开浏览器 [http://localhost:8888](http://localhost:8888)
+
+### 目录说明
+
+```
+react-cli-template
+├── static                                          静态文件
+├── .babelrc                                        babel配置
+├── jsconfig.json                                   vscode相关配置
+├── postcss.config.js                               postcss配置
+├── tsconfig.json                                   typescript配置
+├── typings.d.ts                                    typings
+├── index.html                                      html模板
+├── .eslintrc.js                                    eslint、tslint配置
+├── build                                           构建相关
+│   ├── build.js                                    production启动
+│   ├── check-versions.js                           npm node版本检测
+│   ├── logo.png                                    提示框logo
+│   ├── utils.js                                    构建工具
+│   ├── webpack.base.conf.js                        webpack公共配置
+│   ├── webpack.dev.conf.js                         webpack开发配置
+│   └── webpack.prod.conf.js                        webpack生成配置
+├── config                                          构建配置
+│   ├── dev.env.js                                  开发配置
+│   ├── index.js                                    配置入口
+│   └── prod.env.js                                 生成配置
+└── src                                             项目入口
+    └── main.js                                     项目入口文件
+```
+
+### 配置文件说明 ```config/index.js```
+
