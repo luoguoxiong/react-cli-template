@@ -9,7 +9,7 @@ export default [
     component: Home,
   },
   {
-    linl: "/count",
+    link: "/count",
     component: Count,
   },
 ];
