@@ -65,7 +65,7 @@ react-cli-template
 
 ### 配置文件说明 `config/index.js`
 
-```json
+```js
 {
   dev: {
     assetsSubDirectory: "static", // 静态文件夹
@@ -120,6 +120,6 @@ react-cli-template
     // 静态资源缓存时间
     cacheControl: 24 * 60 * 60 * 1000 * 90,
   },
-};
-
+}
 ```
+
