@@ -1,0 +1,1 @@
+module.exports =["/static/css/app.f10e8e2d8bf52c6729cf.css","/static/js/app.054808f1326e09b3204a.js","/static/js/app.054808f1326e09b3204a.js.map"]
